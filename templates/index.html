@@ -5,6 +5,37 @@
     <title>Sample App</title>
   </head>
   <body>
-    <h1>Hello World!!!</h1>
+    <h2>追加</h2>
+    <form method="post" action="/new">
+      <p>
+        内容<input
+          type="text"
+          name="text"
+          size="30"
+          placeholder="入力してください"
+        />
+      </p>
+      <p>
+        状態
+        <select name="status">
+          <option value="0">Task</option>
+          <option value="1">ThisWeek</option>
+          <option value="2">Doing</option>
+          <option value="3">Review</option>
+          <option value="4">Done</option>
+          <option value="5">Close</option>
+        </select>
+      </p>
+      <p>
+        期限
+        <input type="text" name="deadline" />
+      </p>
+      <p><input type="submit" value="Send" /></p>
+    </form>
+    <ul>
+      {{ range .todos }}
+      <li>内容：{{ .Text }}、状態：{{ .Status }}、期限：{{ .Deadline }}</li>
+      {{end}}
+    </ul>
   </body>
 </html>
